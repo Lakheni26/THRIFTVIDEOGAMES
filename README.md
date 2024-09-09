@@ -10,65 +10,14 @@ MySQL Connector/J 9.0.0 (JDBC Driver for MySQL)
 
 
 Getting Started
-1. Set Up MySQL Database
-Create the Database and Tables
+1. DOWNLOAD THE MY SQL SCRIPT & OPEN IN DBMS
+You can execute thE script in MySQL Workbench or via the MySQL command line:
 
-Save the following SQL script into a file named setup.sql and run it using MySQL:
-
-CREATE DATABASE thriftvideogames;
-USE thriftvideogames;
-
-CREATE TABLE instockvideogames (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    names VARCHAR(255) NOT NULL,
-    price VARCHAR(255) NOT NULL
-);
-
-INSERT INTO instockvideogames (names, price) 
-VALUES
-('The Last of Us Part II', '59.99'),
-('Red Dead Redemption 2', '39.99'),
-('Assassin’s Creed Valhalla', '49.99'),
-('Cyberpunk 2077', '29.99'),
-('Call of Duty: Modern Warfare', '59.99'),
-('FIFA 22', '39.99'),
-('Halo Infinite', '59.99'),
-('Resident Evil Village', '49.99'),
-('Spider-Man: Miles Morales', '49.99'),
-('Far Cry 6', '59.99'),
-('Ghost of Tsushima', '39.99'),
-('Elden Ring', '59.99'),
-('Forza Horizon 5', '49.99'),
-('Battlefield 2042', '59.99'),
-('Grand Theft Auto V', '29.99'),
-('NBA 2K22', '39.99'),
-('Hitman 3', '49.99'),
-('Mortal Kombat 11', '39.99'),
-('Horizon Forbidden West', '59.99'),
-('Ratchet & Clank: Rift Apart', '59.99');
-
-CREATE TABLE bids (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    game_id INT,
-    user_id INT,
-    bid_amount DECIMAL(10, 2),
-    bid_time TIMESTAMP,
-    FOREIGN KEY (game_id) REFERENCES instockvideogames(id)
-);
-
-SELECT * FROM instockvideogames;
-SELECT * FROM bids;
-
-You can execute this script in MySQL Workbench or via the MySQL command line:
-
-mysql -u <username> -p < setup.sql
 2. Set Up Java Application
 Download and Set Up the Project
 
 Clone the repository to your local machine:
 
-sh
-Copy code
 git clone https://github.com/<your-username>/THRIFTVIDEOGAMEAPP.git
 cd THRIFTVIDEOGAMEAPP
 Configure the Database Connection
