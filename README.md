@@ -11,8 +11,8 @@ This is a Java-based console application for a thrift video game store, where us
         Java JDK 17 (or later).
         SQLite (already included in the project as a dependency).
         IntelliJ IDEA (or any Java IDE).
-**
-Getting Started**
+
+**Getting Started**
 
 1. Clone the Repository
 
@@ -46,8 +46,8 @@ The SQLite database is included in the project. If you want to recreate it, you 
         Ensure you have the SQLite JDBC connector properly configured.
         
         Run the ThriftGameStoreApp.java class to start the application.
-**
-5. Using the Application**
+
+**5. Using the Application**
    
         View Games: The app will display a list of available games.
         Place a Bid: Users can place a bid by selecting a game and entering their bid amount.
