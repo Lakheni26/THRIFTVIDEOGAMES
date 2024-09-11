@@ -53,6 +53,8 @@ The SQLite database is included in the project. If you want to recreate it, you 
         Place a Bid: Users can place a bid by selecting a game and entering their bid amount.
         Search: You can search for games if you don’t find what you're looking for.
         
-Future Enhancements
+**Future Enhancements**
+
 Add a GUI interface.
+
 Implement a more dynamic bidding system.
