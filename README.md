@@ -1,82 +1,58 @@
-A Java-based video games thrifting program that uses MySQL to allow users to search and bid on available games.
+This is a Java-based console application for a thrift video game store, where users can view available games and place bids. The system is connected to an SQLite database to store game and bid information.
 
-Requirements'=
+**Features**
 
-        Java JDK 22 or later
-        MySQL Server (or any compatible database server)
-        MySQL Connector/J 9.0.0 (JDBC Driver for MySQL)
-        Getting Started
+        View a list of available video games.
+        Place bids on games.
+        Search for games by name.
         
-1. Set Up MySQL Database
-Save the following SQL script into a file named setup.sql and execute it using MySQL Workbench or the MySQL command line.
+**Prerequisites**
 
-        CREATE DATABASE thriftvideogames;
-        USE thriftvideogames;
+        Java JDK 17 (or later).
+        SQLite (already included in the project as a dependency).
+        IntelliJ IDEA (or any Java IDE).
+**
+Getting Started**
+
+1. Clone the Repository
+
+        git clone https://github.com/Lakheni26/THRIFTVIDEOGAMES.git
+        cd THRIFTVIDEOGAMES
+
+
+2. Set Up SQLite Database
+The SQLite database is included in the project. If you want to recreate it, you can use the provided thriftvideogames.sql script to set up the necessary tables:
+        
+        -- SQL setup script for thriftvideogames database
         
         CREATE TABLE instockvideogames (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            names VARCHAR(255) NOT NULL,
-            price VARCHAR(255) NOT NULL
+            id INTEGER PRIMARY KEY,
+            names TEXT NOT NULL,
+            price REAL NOT NULL
         );
-        
-        INSERT INTO instockvideogames (names, price) 
-        VALUES
-        ('The Last of Us Part II', '59.99'),
-        ('Red Dead Redemption 2', '39.99'),
-        ('Assassin’s Creed Valhalla', '49.99'),
-        ('Cyberpunk 2077', '29.99'),
-        ('Call of Duty: Modern Warfare', '59.99'),
-        ('FIFA 22', '39.99'),
-        ('Halo Infinite', '59.99'),
-        ('Resident Evil Village', '49.99'),
-        ('Spider-Man: Miles Morales', '49.99'),
-        ('Far Cry 6', '59.99'),
-        ('Ghost of Tsushima', '39.99'),
-        ('Elden Ring', '59.99'),
-        ('Forza Horizon 5', '49.99'),
-        ('Battlefield 2042', '59.99'),
-        ('Grand Theft Auto V', '29.99'),
-        ('NBA 2K22', '39.99'),
-        ('Hitman 3', '49.99'),
-        ('Mortal Kombat 11', '39.99'),
-        ('Horizon Forbidden West', '59.99'),
-        ('Ratchet & Clank: Rift Apart', '59.99');
         
         CREATE TABLE bids (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            game_id INT,
-            user_id INT,
-            bid_amount DECIMAL(10, 2),
-            bid_time TIMESTAMP,
-            FOREIGN KEY (game_id) REFERENCES instockvideogames(id)
+            id INTEGER PRIMARY KEY,
+            game_id INTEGER NOT NULL,
+            bidder_name TEXT NOT NULL,
+            bid_amount REAL NOT NULL,
+            FOREIGN KEY (game_id) REFERENCES instockvideogames (id)
         );
    
-3. Set Up Java Application
+**4. Running the Application**
+
+        Open the project in your Java IDE (e.g., IntelliJ IDEA).
+        
+        Ensure you have the SQLite JDBC connector properly configured.
+        
+        Run the ThriftGameStoreApp.java class to start the application.
+**
+5. Using the Application**
    
-        Clone the Repository
+        View Games: The app will display a list of available games.
+        Place a Bid: Users can place a bid by selecting a game and entering their bid amount.
+        Search: You can search for games if you don’t find what you're looking for.
         
-        
-        Copy code
-        git clone https://github.com/<your-username>/THRIFTVIDEOGAMEAPP.git
-        cd THRIFTVIDEOGAMEAPP
-
-Configure the Database Connection
-
-Update the DB_URL, USER, and PASSWORD variables in Main.java to match your MySQL setup:
-        
-        //java
-        Copy code
-        
-        private static final String DB_URL = "jdbc:mysql://localhost/thriftvideogames";
-        private static final String USER = "root";
-        private static final String PASSWORD = "your_mysql_password";
-        Compile and Run
-
-Ensure MySQL Connector/J is in your classpath. Compile and run the Java application:
-        
-        javac -cp .;path/to/mysql-connector-java.jar Main.java
-        java -cp .;path/to/mysql-connector-java.jar Main
-        Usage
-
-        
-Run the application to interact with the video game inventory and place bids.
+Future Enhancements
+Add a GUI interface.
+Implement a more dynamic bidding system.
